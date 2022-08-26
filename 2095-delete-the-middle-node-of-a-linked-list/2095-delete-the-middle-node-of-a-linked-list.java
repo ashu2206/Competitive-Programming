@@ -15,6 +15,10 @@ class Solution {
         ListNode prev=null;
         if(head==null || head.next==null)
             return null;
+          if(head.next.next==null){
+        head.next=null;
+        return head;
+          }
         while(fast!=null && fast.next!=null)
         {
             prev=slow;
