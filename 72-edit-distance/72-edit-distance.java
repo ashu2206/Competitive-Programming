@@ -1,10 +1,12 @@
 class Solution {
     public int minDistance(String word1, String word2) {
+       int m=word1.length();
+       int n=word2.length();
         char str1[]=word1.toCharArray();
         char str2[]=word2.toCharArray();
-        int dp[][]=new int [str1.length+1][str2.length+1];
+        int dp[][]=new int [m+1][n+1];
         dp[0][0]=0;
-        for(int i=0;i<dp[0].length;i++)
+         for(int i=0;i<dp[0].length;i++)
         {
            dp[0][i]=i;
         }
@@ -12,26 +14,24 @@ class Solution {
         {
            dp[j][0]=j;
         }
-        for(int i=1;i<=str1.length;i++)
+        for(int i=1;i<=m;i++)
         {
-            for(int j=1;j<=str2.length;j++)
+            for(int j=1;j<=n;j++)
+
             {
                 if(str1[i-1]==str2[j-1])
                     dp[i][j]=dp[i-1][j-1];
                 else 
-                    dp[i][j]=1+min(dp[i-1][j-1],dp[i-1][j],dp[i][j-1]);
-                        
-                
+                    dp[i][j]=1+min(dp[i][j-1],dp[i-1][j],dp[i-1][j-1]);
             }
         }
-        return dp[str1.length][str2.length];
-        
+        return dp[m][n];
         
     }
-    static int min(int a, int b,int c)
+    public static int min(int a,int b,int c)
     {
-        int e=Math.min(a,b);
-        int f=Math.min(c,e);
-        return f;
+        int d=Math.min(a,b);
+        int e=Math.min(d,c);
+        return e;
     }
 }
