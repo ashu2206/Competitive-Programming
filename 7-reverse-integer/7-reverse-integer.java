@@ -31,17 +31,32 @@ class Solution {
         
 //             return (int)res;
         
-        long res=0;
-         while(x!=0)
-         {
-             res=res*10+x%10;
-             x/=10;
-         }
+//         long res=0;
+//          while(x!=0)
+//          {
+//              res=res*10+x%10;
+//              x/=10;
+//          }
     
-         if(res>Integer.MAX_VALUE || res<Integer.MIN_VALUE)
-            return 0;
+//          if(res>Integer.MAX_VALUE || res<Integer.MIN_VALUE)
+//             return 0;
         
-        return (int)res;
+//         return (int)res;
+        
+        
+       
+ boolean isNegative = x<0;
+ if(isNegative){
+ x = x*-1;
+ }
+ long rev = 0;
+ while(x>0){
+ rev = rev*10 + (x%10);
+ if(rev>=Integer.MAX_VALUE || rev<=Integer.MIN_VALUE) return 0;
+ x /= 10;
+ }
+ return isNegative ? (int)rev*-1 : (int)rev;
+
         
     }
 }
