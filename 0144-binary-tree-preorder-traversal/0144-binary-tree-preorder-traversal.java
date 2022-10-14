@@ -15,17 +15,17 @@
  */
 class Solution {
     public List<Integer> preorderTraversal(TreeNode root) {
-        List<Integer>list=new ArrayList<Integer>();
+ // preorder traversal  by recursion 
+        List<Integer> list=new ArrayList<Integer>();
         dfs(root,list);
-        return list;
+        return list; 
     }
-    private void dfs(TreeNode node, List<Integer> list)
+    private void dfs(TreeNode root,List<Integer>list)
     {
-    if(node==null)
-        return;
-        list.add(node.val);
-        dfs(node.left,list);
-        dfs(node.right,list);
-        
+        if(root==null)
+            return;
+        list.add(root.val);
+        dfs(root.left,list);
+        dfs(root.right,list);
     }
 }
